@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Harsh Raj — Workout Plan</title>
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#080b0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style-extra.css">
+</head>
+<body class="day-blue">
+    <div class="glow-bg"></div>
+    <div class="pull-to-refresh" id="ptr">↓ Pull to update</div>
+
+    <button class="focus-btn" onclick="toggleFocusMode()" aria-label="Toggle Focus Mode">
+        <svg class="nav-icon"><path d="M12 3v3m0 12v3M5.6 5.6l2.2 2.2m8.4 8.4l2.2 2.2M3 12h3m12 0h3M5.6 18.4l2.2-2.2m8.4-8.4l2.2-2.2"/></svg>
+    </button>
+
+    <div class="app-container">
+        <!-- ════════ HERO ════════ -->
+        <header>
+            <div class="brand-eyebrow">POWERHOUSE PATNA GYM</div>
+            <h1 class="hero-title">
+                <span class="name">HARSH RAJ</span>
+                <span class="sub">WORKOUT PLAN</span>
+            </h1>
+        </header>
+
+        <main id="app-content">
+            <!-- ════════ MONDAY (Back & Bi) ════════ -->
+            <section class="exercise-section" id="day-0">
+                <div class="day-header">
+                    <div class="day-info">
+                        <h2>MONDAY</h2>
+                        <p>Back & Biceps · Primary Pull</p>
+                    </div>
+                </div>
+
+                <!-- Back -->
+                <div class="exercise-card" data-id="m01">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">01</span>
+                            <span class="ex-name">T-Bar Bent-Over Row</span>
+                        </div>
+                        <span class="ex-badge">3 × 12–16</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Hip hinge ~45°; chest up, back flat throughout</li>
+                                <li>Pull handle to lower sternum; elbows stay close</li>
+                                <li>Squeeze shoulder blades at the top — hold 1 sec</li>
+                                <li>Full stretch at bottom; don't round upper back</li>
+                            </ul>
+                            <div class="tip-box">Your primary back thickness builder. Load progressively — add 2.5 kg when you hit the top range easily.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="m02">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">02</span>
+                            <span class="ex-name">Lat Pulldown</span>
+                        </div>
+                        <span class="ex-badge">3 × 12–16</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Lean back 15°; initiate by depressing scapula first</li>
+                                <li>Pull bar to upper sternum — not behind the neck</li>
+                                <li>Full stretch at top every rep; let shoulder blades rise</li>
+                            </ul>
+                            <div class="tip-box">Think "pull your elbows to your pockets" not "pull the bar down." This shifts load from biceps to lats.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="m03">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">03</span>
+                            <span class="ex-name">Seated Row</span>
+                        </div>
+                        <span class="ex-badge">3 × 14–20</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Slight forward lean at start for full lat stretch</li>
+                                <li>Pull to upper abdomen; elbows hug torso</li>
+                                <li>Squeeze blades at peak; slow return</li>
+                            </ul>
+                            <div class="tip-box">Higher rep range here creates metabolic stress for back density. Constant cable tension is key.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="m04">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">04</span>
+                            <span class="ex-name">Pullover</span>
+                        </div>
+                        <span class="ex-badge">2 × Failure</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Lie across bench; hips low to maximise lat stretch</li>
+                                <li>Arms straight; arc from overhead to hips</li>
+                                <li>Feel the lat stretch at full extension</li>
+                            </ul>
+                            <div class="tip-box">Targets the lats through a unique arc. Also develops the serratus anterior — the "fingers" at the side.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biceps -->
+                <div class="exercise-card" data-id="m05">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">05</span>
+                            <span class="ex-name">Preacher Curl</span>
+                        </div>
+                        <span class="ex-badge">3 × 12–16</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Chest flat against pad; upper arms fully supported</li>
+                                <li>Full extension at the bottom — don't cut the range</li>
+                                <li>Slow curl; hard squeeze at top</li>
+                            </ul>
+                            <div class="tip-box">The pad eliminates momentum entirely. When you can't cheat, every rep is pure muscle work.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="m06">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">06</span>
+                            <span class="ex-name">Dumbbell Curl</span>
+                        </div>
+                        <span class="ex-badge">3 × Failure</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Keep elbows pinned to sides</li>
+                                <li>Supinate (twist pinky out) during the curl</li>
+                                <li>No swinging — if you swing, the set is over</li>
+                            </ul>
+                            <div class="tip-box">Going to failure here after preacher curls = maximum growth stimulus.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forearms -->
+                <div class="exercise-card" data-id="m07">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">07</span>
+                            <span class="ex-name">Reverse Grip Curls</span>
+                        </div>
+                        <span class="ex-badge">3 × 12</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Overhand grip; elbows fixed at sides</li>
+                                <li>Lighter than regular curls — control is key</li>
+                            </ul>
+                            <div class="tip-box">Builds the brachialis which pushes the bicep up, creating arm thickness.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="m08">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">08</span>
+                            <span class="ex-name">Wrist Curls</span>
+                        </div>
+                        <span class="ex-badge">3 × 12</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Forearms on thighs, palms up</li>
+                                <li>Let bar roll to fingertips on descent</li>
+                            </ul>
+                            <div class="tip-box">The "roll to fingertips" doubles the range of motion. This is where growth lives.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════ TUESDAY (Chest & Tri) ════════ -->
+            <section class="exercise-section" id="day-1">
+                <div class="day-header">
+                    <div class="day-info">
+                        <h2>TUESDAY</h2>
+                        <p>Chest & Triceps · Primary Push</p>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="t01">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">01</span>
+                            <span class="ex-name">Incline DB Press — Heavy</span>
+                        </div>
+                        <span class="ex-badge">3 × 6–12</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>30–45° bench; pinch shoulder blades before unracking</li>
+                                <li>Lower DBs to outer chest; elbows ~75° from torso</li>
+                                <li>Drive through palms; rotate slightly inward at top</li>
+                            </ul>
+                            <div class="tip-box">Your strength set — aim for 6-8 reps with a weight that's genuinely challenging.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="t02">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">02</span>
+                            <span class="ex-name">Incline Bench — Slow</span>
+                        </div>
+                        <span class="ex-badge">1 × 16–20</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Moderate weight (40-50kg); 3-sec eccentric, 1-sec pause at bottom</li>
+                                <li>Touch chest; full extension at top</li>
+                            </ul>
+                            <div class="tip-box">Back-to-back incline creates both mechanical tension and metabolic stress.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="t03">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">03</span>
+                            <span class="ex-name">Pec Deck Fly</span>
+                        </div>
+                        <span class="ex-badge">3 × 18</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Bring pads together with a "hugging" motion; hold 1 sec</li>
+                                <li>Control the return fully — that stretch is the stimulus</li>
+                            </ul>
+                            <div class="tip-box">Pec deck isolates the chest better than almost anything else.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="t04">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">04</span>
+                            <span class="ex-name">Flat Bench Press</span>
+                        </div>
+                        <span class="ex-badge">2 × 6–12</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Natural arch; feet drive into floor; leg drive = stability</li>
+                                <li>Touch bar to lower sternum; elbows 45–60° to torso</li>
+                            </ul>
+                            <div class="tip-box">Only 2 sets because you've already pre-fatigued the chest.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="t05">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">05</span>
+                            <span class="ex-name">Decline DB Press</span>
+                        </div>
+                        <span class="ex-badge">3 × 16</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Press up and slightly inward; squeeze hard at top</li>
+                                <li>16 reps = moderate weight, pump focus</li>
+                            </ul>
+                            <div class="tip-box">Lower chest fibres only activate fully when pressing from a decline angle.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Triceps -->
+                <div class="exercise-card" data-id="t06">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">06</span>
+                            <span class="ex-name">Triceps Pushdown</span>
+                        </div>
+                        <span class="ex-badge">3 × Failure</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Rope or bar; elbows pinned to sides</li>
+                                <li>Split rope at bottom for full lateral-head squeeze</li>
+                            </ul>
+                            <div class="tip-box">Going to failure after chest means your triceps are already partially fatigued.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="t07">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">07</span>
+                            <span class="ex-name">Overhead Extension</span>
+                        </div>
+                        <span class="ex-badge">3 × Failure</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Rope overhead; arms forward fully; hold squeeze</li>
+                                <li>Return slowly — the stretch is the money position</li>
+                            </ul>
+                            <div class="tip-box">The only way to fully stretch the long head — the largest head.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════ WEDNESDAY (Shoulders) ════════ -->
+            <section class="exercise-section" id="day-2">
+                <div class="day-header">
+                    <div class="day-info">
+                        <h2>WEDNESDAY</h2>
+                        <p>Shoulders · 3D Delts</p>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="w01">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">01</span>
+                            <span class="ex-name">DB Press</span>
+                        </div>
+                        <span class="ex-badge">3 × 8–14</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Seated or standing; DBs at ear level</li>
+                                <li>Press up and slightly inward; full extension</li>
+                            </ul>
+                            <div class="tip-box">Allows each arm to move independently, fixing strength imbalances.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="w02">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">02</span>
+                            <span class="ex-name">Cable Lateral Raise</span>
+                        </div>
+                        <span class="ex-badge">3 × 16–20</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Lead with elbow; tilt pinky up slightly at top</li>
+                                <li>Controlled descent — 2 sec down minimum</li>
+                            </ul>
+                            <div class="tip-box">Cable provides constant tension through the full range.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="w03">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">03</span>
+                            <span class="ex-name">Reverse Pec Deck — Slow</span>
+                        </div>
+                        <span class="ex-badge">3 × Failure</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>3-sec eccentric; don't use traps to assist</li>
+                                <li>Hold 1 sec at rear peak; feel the rear delt squeeze</li>
+                            </ul>
+                            <div class="tip-box">Rear delts are essential for the 3D "capped" shoulder look.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="w04">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">04</span>
+                            <span class="ex-name">Cable Shrugs</span>
+                        </div>
+                        <span class="ex-badge">3 × 12</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Straight arms; shrug straight up; hold for 2 sec</li>
+                                <li>Don't roll the shoulders forward</li>
+                            </ul>
+                            <div class="tip-box">Constant tension vs barbell which loses it at the bottom.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════ THURSDAY (Legs) ════════ -->
+            <section class="exercise-section" id="day-3">
+                <div class="day-header">
+                    <div class="day-info">
+                        <h2>THURSDAY</h2>
+                        <p>Legs · Lower Body Strength</p>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="l01">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">01</span>
+                            <span class="ex-name">Heavy Squats</span>
+                        </div>
+                        <span class="ex-badge">3 × 8–14</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Brace core hard; descend to parallel+</li>
+                                <li>Knees track over toes; chest stays tall</li>
+                            </ul>
+                            <div class="tip-box">The king of lower-body exercises. Track your numbers weekly.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="l02">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">02</span>
+                            <span class="ex-name">Leg Extension</span>
+                        </div>
+                        <span class="ex-badge">3 × 20</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Squeeze the VMO at the top; 3-sec eccentric</li>
+                                <li>20 reps = moderate weight, pump focus</li>
+                            </ul>
+                            <div class="tip-box">Brutal pump after squats — a different stimulus.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="l03">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">03</span>
+                            <span class="ex-name">Leg Curl</span>
+                        </div>
+                        <span class="ex-badge">3 × 20</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Hold peak contraction 1 sec; 3-sec eccentric</li>
+                                <li>Pointed toes for max hamstring contraction</li>
+                            </ul>
+                            <div class="tip-box">Hamstrings respond extremely well to high reps.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════ FRIDAY (Back & Bi Hit 2) ════════ -->
+            <section class="exercise-section" id="day-4">
+                <div class="day-header">
+                    <div class="day-info">
+                        <h2>FRIDAY</h2>
+                        <p>Back & Biceps · Hit 2</p>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="f01">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">01</span>
+                            <span class="ex-name">Reverse Grip Row</span>
+                        </div>
+                        <span class="ex-badge">3 × 12–16</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Underhand grip; pull to lower abdomen</li>
+                                <li>Emphasises lower lats more than overhand</li>
+                            </ul>
+                            <div class="tip-box">Shifts load to lower lats and involves biceps more heavily.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="f02">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">02</span>
+                            <span class="ex-name">Lat Pulldown (Alt Grip)</span>
+                        </div>
+                        <span class="ex-badge">3 × 12–16</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Use a different grip than Monday (Wide/Neutral/Under)</li>
+                            </ul>
+                            <div class="tip-box">Rotating grip weekly ensures you develop full lat coverage.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="f03">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">03</span>
+                            <span class="ex-name">Seated Row</span>
+                        </div>
+                        <span class="ex-badge">3 × 14–20</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <div class="tip-box">Second hit builds strength faster. Consistency is key.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="f04">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">04</span>
+                            <span class="ex-name">Hammer Curl</span>
+                        </div>
+                        <span class="ex-badge">3 × Failure</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <ul class="cues-list">
+                                <li>Neutral grip (thumbs up); no swinging</li>
+                            </ul>
+                            <div class="tip-box">Focuses on the brachialis for arm thickness.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════ SATURDAY (Chest & Tri Hit 2) ════════ -->
+            <section class="exercise-section" id="day-5">
+                <div class="day-header">
+                    <div class="day-info">
+                        <h2>SATURDAY</h2>
+                        <p>Chest & Triceps · Hit 2</p>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="s01">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">01</span>
+                            <span class="ex-name">Incline DB Press</span>
+                        </div>
+                        <span class="ex-badge">3 × 6–12</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <div class="tip-box">Compare with Tuesday — match or beat it.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="s02">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">02</span>
+                            <span class="ex-name">Flat Bench Press</span>
+                        </div>
+                        <span class="ex-badge">2 × 6–12</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <div class="tip-box">Optimal volume for strength progression.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-card" data-id="s03">
+                    <div class="exercise-header">
+                        <div class="ex-title-wrap">
+                            <span class="ex-number">03</span>
+                            <span class="ex-name">Triceps Pushdown</span>
+                        </div>
+                        <span class="ex-badge">3 × Failure</span>
+                    </div>
+                    <div class="exercise-details">
+                        <div class="details-content">
+                            <div class="tip-box">Failure sets twice weekly = high stimulus.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════ SUNDAY (Rest) ════════ -->
+            <section class="exercise-section" id="day-6">
+                <div class="day-header">
+                    <div class="day-info">
+                        <h2>SUNDAY</h2>
+                        <p>Rest & Recovery</p>
+                    </div>
+                </div>
+                <div class="tip-box" style="font-size: 16px; line-height: 1.6;">
+                    Sunday is when you rebuild. 8-9 hours of sleep, hit your protein targets, and stay hydrated. Progress is made in your sleep!
+                </div>
+            </section>
+
+            <!-- ════════ WEEKLY TRACKER ════════ -->
+            <section class="weekly-tracker">
+                <h3 class="display-font" style="font-size: 18px; color: var(--accent);">Weekly Progress</h3>
+                <div class="tracker-grid" id="weekly-tracker-grid"></div>
+            </section>
+        </main>
+
+        <!-- ════════ BOTTOM NAV ════════ -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" data-day="0">
+                <svg class="nav-icon"><path d="M4 4h16v16H4z M9 9h6v6H9z"/></svg>
+                <span>MON</span>
+            </a>
+            <a href="#" class="nav-item" data-day="1">
+                <svg class="nav-icon"><path d="M4 4h16v16H4z M12 7v10 M7 12h10"/></svg>
+                <span>TUE</span>
+            </a>
+            <a href="#" class="nav-item" data-day="2">
+                <svg class="nav-icon"><path d="M12 3l9 18H3l9-18z"/></svg>
+                <span>WED</span>
+            </a>
+            <a href="#" class="nav-item" data-day="3">
+                <svg class="nav-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>THU</span>
+            </a>
+            <a href="#" class="nav-item" data-day="4">
+                <svg class="nav-icon"><path d="M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5 M2 12l10 5 10-5"/></svg>
+                <span>FRI</span>
+            </a>
+            <a href="#" class="nav-item" data-day="5">
+                <svg class="nav-icon"><circle cx="12" cy="12" r="10"/></svg>
+                <span>SAT</span>
+            </a>
+            <a href="#" class="nav-item" data-day="6">
+                <svg class="nav-icon"><path d="M10 21h4 M19 10v7 M5 10v7 M12 3v18"/></svg>
+                <span>SUN</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

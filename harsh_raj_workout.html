@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh Raj — Full Workout Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Epilogue:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060809;
+  --bg2: #0c0f13;
+  --bg3: #121720;
+  --surface: rgba(255,255,255,0.03);
+  --surface2: rgba(255,255,255,0.055);
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #edf1f7;
+  --muted: #4e5a6e;
+  --dim: #8795a8;
+
+  --blue: #3b8bff;
+  --blue-s: rgba(59,139,255,0.12);
+  --blue-b: rgba(59,139,255,0.25);
+
+  --red: #ff3b3b;
+  --red-s: rgba(255,59,59,0.12);
+  --red-b: rgba(255,59,59,0.25);
+
+  --yellow: #f0b429;
+  --yellow-s: rgba(240,180,41,0.12);
+  --yellow-b: rgba(240,180,41,0.25);
+
+  --green: #16c079;
+  --green-s: rgba(22,192,121,0.12);
+  --green-b: rgba(22,192,121,0.25);
+
+  --teal: #00c8b8;
+  --purple: #a259ff;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Epilogue', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Atmospheric mesh */
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 90% 60% at -10% 0%, rgba(59,139,255,0.055) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 110% 90%, rgba(255,59,59,0.045) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0,200,184,0.025) 0%, transparent 60%);
+}
+/* Subtle grid lines */
+body::after {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 30%, transparent 80%);
+}
+
+.wrap { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:0 20px 100px; }
+
+/* ═══ HERO ═══ */
+.hero {
+  padding: 64px 0 48px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 16px;
+}
+.hero-eyebrow::before {
+  content:''; width:28px; height:1px; background: var(--blue);
+}
+
+.hero-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; text-transform: uppercase;
+  line-height: .88; letter-spacing: .01em;
+}
+.hero-name .first {
+  font-size: clamp(72px, 11vw, 128px);
+  background: linear-gradient(120deg, #fff 20%, var(--blue) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  display: block;
+}
+.hero-name .last {
+  font-size: clamp(40px, 6vw, 72px);
+  color: var(--dim); display: block;
+}
+
+.hero-right {
+  display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
+}
+
+.hero-stat-pill {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 100px; padding: 8px 16px;
+}
+.hsp-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 800; letter-spacing: .04em;
+}
+.hsp-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-family: 'JetBrains Mono', monospace; }
+.hsp-div { width: 1px; height: 16px; background: var(--border2); }
+
+/* ═══ WEEK OVERVIEW ═══ */
+.week-strip {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 8px; margin-bottom: 40px;
+}
+.ws-card {
+  border-radius: 12px; padding: 14px 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer; transition: all .2s;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.ws-card:hover { border-color: var(--border2); background: var(--surface2); }
+.ws-card.active-day { border-color: var(--border2); background: var(--surface2); }
+.ws-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ws-day { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ws-name { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; line-height: 1; }
+.ws-count { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+/* ═══ TABS ═══ */
+.tabs {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--border); margin-bottom: 0; padding-bottom: 0;
+}
+.tab {
+  padding: 9px 18px; border-radius: 8px 8px 0 0;
+  border: 1px solid transparent; border-bottom: none;
+  background: transparent; cursor: pointer;
+  font-family: 'Epilogue', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--muted); transition: all .18s;
+  position: relative; bottom: -1px; white-space: nowrap;
+}
+.tab:hover { color: var(--dim); background: var(--surface); }
+.tab.active { background: var(--bg2); border-color: var(--border); border-bottom-color: var(--bg2); color: var(--text); }
+
+/* ═══ DAY PANEL ═══ */
+.panel { display: none; animation: fadeUp .25s ease; }
+.panel.active { display: block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* Day header */
+.day-hdr {
+  padding: 24px 28px; border: 1px solid var(--border); border-top: none; border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.dh-left {}
+.dh-eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px;
+}
+.dh-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 38px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .02em; line-height: 1;
+}
+.dh-note { font-size: 11px; color: var(--dim); margin-top: 6px; font-style: italic; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.chip {
+  padding: 3px 9px; border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-weight: 500; letter-spacing: .07em; text-transform: uppercase;
+}
+.dh-counters { display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-end; }
+.dc { text-align: center; }
+.dc-n { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: .04em; line-height: 1; }
+.dc-l { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-family: 'JetBrains Mono', monospace; margin-top: 2px; }
+
+/* Chip variants */
+.ch-back  { background: var(--blue-s);   color: #6ab0ff; border: 1px solid var(--blue-b); }
+.ch-bicep { background: rgba(162,89,255,.12); color: #c084fc; border: 1px solid rgba(162,89,255,.25); }
+.ch-fore  { background: rgba(0,200,184,.1); color: #5eead4; border: 1px solid rgba(0,200,184,.22); }
+.ch-chest { background: var(--red-s);    color: #ff7070; border: 1px solid var(--red-b); }
+.ch-tri   { background: rgba(255,124,53,.12); color: #fdba74; border: 1px solid rgba(255,124,53,.25); }
+.ch-abs   { background: var(--yellow-s); color: #fcd34d; border: 1px solid var(--yellow-b); }
+.ch-shld  { background: var(--yellow-s); color: #fde68a; border: 1px solid var(--yellow-b); }
+.ch-legs  { background: var(--green-s);  color: #4ade80; border: 1px solid var(--green-b); }
+
+/* ═══ SECTION DIVIDER ═══ */
+.sec-divider {
+  padding: 9px 28px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  background: rgba(255,255,255,.015); border: 1px solid var(--border); border-top: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-divider::after { content:''; flex: 1; height: 1px; background: var(--border); }
+
+/* ═══ EXERCISE ═══ */
+.ex-wrap { border: 1px solid var(--border); border-top: none; }
+.ex-wrap:last-of-type { border-radius: 0 0 14px 14px; }
+
+.ex {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background .14s;
+}
+.ex:last-child { border-bottom: none; }
+.ex:hover { background: var(--surface2); }
+
+.ex-row {
+  display: grid; grid-template-columns: 40px 1fr auto;
+  gap: 12px; align-items: center; padding: 15px 28px;
+}
+.ex-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--muted); text-align: center;
+}
+.ex-name {
+  font-size: 13px; font-weight: 600; margin-bottom: 2px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ex-focus { font-size: 11px; color: var(--dim); }
+.ex-badge {
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 6px; padding: 5px 10px; white-space: nowrap;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: .04em;
+  color: var(--text);
+}
+
+/* colour the badge per day */
+.panel-blue .ex-badge  { color: var(--blue); border-color: var(--blue-b); }
+.panel-red .ex-badge   { color: var(--red);  border-color: var(--red-b);  }
+.panel-yellow .ex-badge{ color: var(--yellow); border-color: var(--yellow-b); }
+.panel-green .ex-badge { color: var(--green); border-color: var(--green-b); }
+
+.arr { font-size: 11px; color: var(--muted); transition: transform .22s; display:inline-block; margin-left:6px; }
+.ex.open .arr { transform: rotate(90deg); }
+
+/* ═══ DETAIL EXPAND ═══ */
+.ex-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .2s;
+  padding: 0 28px 0 80px;
+}
+.ex.open .ex-detail { max-height: 420px; padding: 0 28px 18px 80px; }
+
+.detail-inner {
+  border-top: 1px solid var(--border); padding-top: 14px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+@media(max-width:560px){ .detail-inner { grid-template-columns: 1fr; } }
+
+.dl-lbl {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px;
+}
+.panel-blue  .dl-lbl { color: var(--blue); }
+.panel-red   .dl-lbl { color: var(--red); }
+.panel-yellow .dl-lbl { color: var(--yellow); }
+.panel-green .dl-lbl { color: var(--green); }
+
+.cues { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.cues li {
+  font-size: 12px; color: var(--dim); line-height: 1.6;
+  padding-left: 14px; position: relative;
+}
+.panel-blue  .cues li::before { content:'›'; position:absolute; left:0; top:-1px; color:var(--blue); font-size:14px; }
+.panel-red   .cues li::before { content:'›'; position:absolute; left:0; top:-1px; color:var(--red);  font-size:14px; }
+.panel-yellow .cues li::before { content:'›'; position:absolute; left:0; top:-1px; color:var(--yellow); font-size:14px; }
+.panel-green .cues li::before { content:'›'; position:absolute; left:0; top:-1px; color:var(--green); font-size:14px; }
+
+.tip-box {
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 12px; color: var(--dim); line-height: 1.65;
+}
+.panel-blue  .tip-box { background: var(--blue-s);   border: 1px solid var(--blue-b);   }
+.panel-red   .tip-box { background: var(--red-s);    border: 1px solid var(--red-b);    }
+.panel-yellow .tip-box { background: var(--yellow-s); border: 1px solid var(--yellow-b); }
+.panel-green .tip-box { background: var(--green-s);  border: 1px solid var(--green-b);  }
+
+/* ═══ ABS BLOCK ═══ */
+.abs-block {
+  border: 1px solid var(--yellow-b); border-top: none;
+  background: rgba(240,180,41,0.04);
+  padding: 18px 28px;
+}
+.abs-block:last-of-type { border-radius: 0 0 14px 14px; }
+.abs-title {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--yellow);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.abs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media(max-width:500px){ .abs-grid { grid-template-columns: 1fr; } }
+.abs-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px;
+}
+.abs-ex { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+.abs-sets { font-size: 11px; color: var(--yellow); font-family: 'JetBrains Mono', monospace; }
+.abs-note { font-size: 11px; color: var(--dim); margin-top: 3px; }
+
+/* ═══ FOREARM BLOCK ═══ */
+.fore-block {
+  border: 1px solid var(--teal-border, rgba(0,200,184,.22)); border-top: none;
+  background: rgba(0,200,184,0.04); padding: 18px 28px;
+}
+.fore-block:last-of-type { border-radius: 0 0 14px 14px; }
+.fore-title {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--teal);
+  margin-bottom: 12px;
+}
+.fore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+.fore-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px;
+}
+.fore-ex { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+.fore-sets { font-size: 10px; color: var(--teal); font-family: 'JetBrains Mono', monospace; }
+
+/* ═══ REST ═══ */
+.rest-panel {
+  background: var(--bg2); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 14px 14px; padding: 64px 32px; text-align: center;
+}
+.rest-ico { font-size: 60px; margin-bottom: 18px; }
+.rest-h { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; text-transform: uppercase; color: var(--muted); }
+.rest-p { font-size: 13px; color: var(--muted); max-width: 440px; margin: 12px auto 0; line-height: 1.7; }
+.rest-pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+.rpill { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 12px; color: var(--dim); }
+
+/* ═══ WEEK TRACKER ═══ */
+.tracker-sec { margin-top: 52px; }
+.sec-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+.tgrid { display: flex; gap: 8px; flex-wrap: wrap; }
+.tday {
+  width: 48px; height: 56px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  cursor: pointer; gap: 3px; transition: all .18s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.tday:hover { border-color: var(--border2); }
+.tday.done { background: rgba(22,192,121,.1); border-color: rgba(22,192,121,.3); }
+.td-n { font-size: 13px; font-weight: 600; }
+.td-l { font-size: 8px; text-transform: uppercase; color: var(--muted); }
+
+/* ═══ FOOTER ═══ */
+footer {
+  border-top: 1px solid var(--border); padding: 28px 0; margin-top: 60px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.ft-name { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.ft-note { font-size: 11px; color: var(--muted); }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:640px){
+  .week-strip { grid-template-columns: repeat(3,1fr); }
+  .ex-row { grid-template-columns: 32px 1fr; }
+  .ex-badge { grid-column: 1/-1; margin-left: 44px; }
+  .day-hdr, .sec-divider, .ex-row, .ex-detail, .ex.open .ex-detail,
+  .abs-block, .fore-block { padding-left: 16px; padding-right: 16px; }
+  .ex.open .ex-detail { padding-left: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Full Workout Plan · Powerhouse Patna Gym</div>
+    <div class="hero-name">
+      <span class="first">Harsh</span>
+      <span class="last">Raj</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-pill">
+      <span class="hsp-val" style="color:var(--blue)">6</span><span class="hsp-div"></span><span class="hsp-label">Training Days</span>
+    </div>
+    <div class="hero-stat-pill">
+      <span class="hsp-val" style="color:var(--red)">2×</span><span class="hsp-div"></span><span class="hsp-label">Back+Chest Freq</span>
+    </div>
+    <div class="hero-stat-pill">
+      <span class="hsp-val" style="color:var(--green)">Sun</span><span class="hsp-div"></span><span class="hsp-label">Rest Day</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ WEEK STRIP ═══════════════ -->
+<div class="week-strip">
+  <div class="ws-card" onclick="showDay(0,this)">
+    <div class="ws-dot" style="background:var(--blue)"></div>
+    <div class="ws-day">Monday</div>
+    <div class="ws-name" style="color:var(--blue)">Back &amp; Bi</div>
+    <div class="ws-count">11 exercises</div>
+  </div>
+  <div class="ws-card" onclick="showDay(1,this)">
+    <div class="ws-dot" style="background:var(--red)"></div>
+    <div class="ws-day">Tuesday</div>
+    <div class="ws-name" style="color:var(--red)">Chest &amp; Tri</div>
+    <div class="ws-count">10 exercises</div>
+  </div>
+  <div class="ws-card" onclick="showDay(2,this)">
+    <div class="ws-dot" style="background:var(--yellow)"></div>
+    <div class="ws-day">Wednesday</div>
+    <div class="ws-name" style="color:var(--yellow)">Shoulders</div>
+    <div class="ws-count">9 exercises</div>
+  </div>
+  <div class="ws-card" onclick="showDay(3,this)">
+    <div class="ws-dot" style="background:var(--green)"></div>
+    <div class="ws-day">Thursday</div>
+    <div class="ws-name" style="color:var(--green)">Legs</div>
+    <div class="ws-count">6 exercises</div>
+  </div>
+  <div class="ws-card" onclick="showDay(4,this)">
+    <div class="ws-dot" style="background:var(--blue)"></div>
+    <div class="ws-day">Friday</div>
+    <div class="ws-name" style="color:var(--blue)">Back &amp; Bi</div>
+    <div class="ws-count">10 exercises</div>
+  </div>
+  <div class="ws-card" onclick="showDay(5,this)">
+    <div class="ws-dot" style="background:var(--red)"></div>
+    <div class="ws-day">Saturday</div>
+    <div class="ws-name" style="color:var(--red)">Chest &amp; Tri</div>
+    <div class="ws-count">10 exercises</div>
+  </div>
+</div>
+
+<!-- ═══════════════ TABS ═══════════════ -->
+<div class="tabs">
+  <button class="tab active" onclick="showDay(0,null,this)">🔵 Monday</button>
+  <button class="tab" onclick="showDay(1,null,this)">🔴 Tuesday</button>
+  <button class="tab" onclick="showDay(2,null,this)">🟡 Wednesday</button>
+  <button class="tab" onclick="showDay(3,null,this)">🟢 Thursday</button>
+  <button class="tab" onclick="showDay(4,null,this)">🔵 Friday</button>
+  <button class="tab" onclick="showDay(5,null,this)">🔴 Saturday</button>
+  <button class="tab" onclick="showDay(6,null,this)">🛑 Sunday</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 0 — MONDAY · BACK & BICEPS
+══════════════════════════════════════════ -->
+<div class="panel panel-blue active" id="d0">
+  <div class="day-hdr">
+    <div class="dh-left">
+      <div class="dh-eyebrow" style="color:var(--blue)">Monday · Primary Pull</div>
+      <div class="dh-title">Back &amp; Biceps</div>
+      <div class="dh-note">Width + thickness + arm curl volume + forearm finisher</div>
+      <div class="chips">
+        <span class="chip ch-back">Back</span>
+        <span class="chip ch-bicep">Biceps</span>
+        <span class="chip ch-fore">Forearms</span>
+      </div>
+    </div>
+    <div class="dh-counters">
+      <div class="dc"><div class="dc-n" style="color:var(--blue)">4</div><div class="dc-l">Back Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--purple)">3</div><div class="dc-l">Bicep Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--teal)">5</div><div class="dc-l">Forearm Ex.</div></div>
+    </div>
+  </div>
+
+  <!-- BACK -->
+  <div class="sec-divider" style="color:var(--blue)">Back</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">01</span>
+        <div><div class="ex-name">T-Bar Bent-Over Row <span class="arr">›</span></div><div class="ex-focus">Mid-back thickness · Rhomboids · Rear delts</div></div>
+        <div class="ex-badge">3 × 12–16</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Hip hinge ~45°; chest up, back flat throughout</li>
+          <li>Pull handle to lower sternum; elbows stay close</li>
+          <li>Squeeze shoulder blades at the top — hold 1 sec</li>
+          <li>Full stretch at bottom; don't round upper back under load</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">This is your primary back thickness builder. The hip-hinge position mirrors a takedown stance. Load progressively — add 2.5 kg when you can hit the top of the rep range easily.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">02</span>
+        <div><div class="ex-name">Lat Pulldown <span class="arr">›</span></div><div class="ex-focus">Lat width · Lower lats · Upper-back sweep</div></div>
+        <div class="ex-badge">3 × 12–16</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Lean back 15°; initiate by depressing scapula first</li>
+          <li>Pull bar to upper sternum — not behind the neck</li>
+          <li>Full stretch at top every rep; let shoulder blades rise</li>
+          <li>Thumbless grip removes forearm interference</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Think "pull your elbows to your pockets" not "pull the bar down." This mental cue shifts the load from biceps to lats instantly.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">03</span>
+        <div><div class="ex-name">Seated Row <span class="arr">›</span></div><div class="ex-focus">Mid-back · Rhomboids · Constant cable tension</div></div>
+        <div class="ex-badge">3 × 14–20</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Slight forward lean at start for full lat stretch</li>
+          <li>Pull to upper abdomen; elbows hug torso</li>
+          <li>Squeeze blades at peak; slow return to full stretch</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Higher rep range (14–20) here creates metabolic stress for back density. The constant cable tension is a different stimulus than free-weight rows.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">04</span>
+        <div><div class="ex-name">Pullover <span class="arr">›</span></div><div class="ex-focus">Lats · Serratus · Long head triceps · Rib cage expansion</div></div>
+        <div class="ex-badge">2 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Lie across bench; hips low to maximise lat stretch</li>
+          <li>Arms straight (soft elbow bend); arc from overhead to hips</li>
+          <li>Feel the lat stretch at full extension — don't rush it</li>
+          <li>Go to true muscular failure; last set leave nothing behind</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Pullovers target the lats through a unique arc that rows and pulldowns can't replicate. They also develop the serratus anterior — visible as the "fingers" at the side of the chest on lean athletes.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- BICEPS -->
+  <div class="sec-divider" style="color:var(--purple)">Biceps</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">05</span>
+        <div><div class="ex-name">Preacher Curl <span class="arr">›</span></div><div class="ex-focus">Short head · Zero cheating · Bicep width</div></div>
+        <div class="ex-badge">3 × 12–16</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Chest flat against pad; upper arms fully supported</li>
+          <li>Full extension at the bottom — don't cut the range</li>
+          <li>Slow curl; hard squeeze at top; use EZ-bar for wrist comfort</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">The pad eliminates momentum entirely. When you can't cheat, every rep is pure muscle work — which is exactly why this is the most effective curl variation for growth.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">06</span>
+        <div><div class="ex-name">Dumbbell Curl <span class="arr">›</span></div><div class="ex-focus">Full bicep · Supination emphasis · Pump finisher</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Alternate or simultaneous — keep elbows pinned to sides</li>
+          <li>Supinate (twist pinky out) during the curl for peak contraction</li>
+          <li>Go to failure; last set should be difficult by rep 10+</li>
+          <li>No swinging — if you're swinging, the set is over</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Going to failure here after preacher curls = double the mechanical + metabolic stimulus. This combination is a classic high-volume bicep protocol.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- FOREARMS -->
+  <div class="sec-divider" style="color:var(--teal)">Forearms</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">07</span>
+        <div><div class="ex-name">Reverse Grip Curls <span class="arr">›</span></div><div class="ex-focus">Brachioradialis · Forearm extensors · Brachialis</div></div>
+        <div class="ex-badge">3 × 12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Overhand (pronated) grip; elbows fixed at sides</li>
+          <li>Full ROM: complete extension to full contraction</li>
+          <li>Lighter than regular curls — control the weight</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Builds the brachialis which pushes the bicep up, creating arm thickness. Also directly develops grip endurance critical for pulling sports.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">08</span>
+        <div><div class="ex-name">Reverse Wrist Curls <span class="arr">›</span></div><div class="ex-focus">Forearm extensors (top of forearm)</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Forearms on thighs, backs of hands facing up</li>
+          <li>Extend wrists fully upward; use very light weight</li>
+          <li>Extensors are much weaker than flexors — respect the weight</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Training extensors alongside flexors creates balance and protects against tennis elbow — especially important with the high forearm volume in this program.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">09</span>
+        <div><div class="ex-name">Bar Forearm Pushdown <span class="arr">›</span></div><div class="ex-focus">Forearm extensors · Wrist stability</div></div>
+        <div class="ex-badge">2 × 15</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Cable machine, bar attachment at chest height; overhand grip</li>
+          <li>Push bar down by extending wrists; elbows fixed</li>
+          <li>Controlled return to full wrist flexion</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">This is a relatively rare forearm exercise — the pushdown mechanic isolates the extensor compartment in a way no other exercise does. Great for complete forearm development.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">10</span>
+        <div><div class="ex-name">Reverse Wrist Curls (2nd Set) <span class="arr">›</span></div><div class="ex-focus">Extensor burnout</div></div>
+        <div class="ex-badge">3 × 12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same as above; slightly lighter since pre-fatigued</li><li>Focus on full range and peak contraction</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Second hit on extensors for full development. Forearms are high-frequency muscles — they recover quickly and respond well to this volume.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row">
+        <span class="ex-num">11</span>
+        <div><div class="ex-name">Wrist Curls <span class="arr">›</span></div><div class="ex-focus">Forearm flexors · Grip strength</div></div>
+        <div class="ex-badge">3 × 12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Sit; forearms on thighs, palms up, wrists over knees</li>
+          <li>Let bar roll to fingertips on descent — maximises ROM</li>
+          <li>Curl wrists up as high as possible; hold briefly</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">The "roll to fingertips" on the way down doubles the range of motion compared to most people's technique. This is where most of the growth stimulus lives.</div></div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 1 — TUESDAY · CHEST & TRICEPS
+══════════════════════════════════════════ -->
+<div class="panel panel-red" id="d1">
+  <div class="day-hdr">
+    <div class="dh-left">
+      <div class="dh-eyebrow" style="color:var(--red)">Tuesday · Primary Push</div>
+      <div class="dh-title">Chest &amp; Triceps</div>
+      <div class="dh-note">Heavy incline → volume incline → fly isolation → flat → decline → tri burnout</div>
+      <div class="chips">
+        <span class="chip ch-chest">Chest</span>
+        <span class="chip ch-tri">Triceps</span>
+        <span class="chip ch-abs">Abs</span>
+      </div>
+    </div>
+    <div class="dh-counters">
+      <div class="dc"><div class="dc-n" style="color:var(--red)">5</div><div class="dc-l">Chest Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--teal)">2</div><div class="dc-l">Tri Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--yellow)">3</div><div class="dc-l">Abs Ex.</div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--red)">Chest</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">01</span>
+        <div><div class="ex-name">Incline DB Press — Heavy <span class="arr">›</span></div><div class="ex-focus">Upper chest · Anterior delt · Strength focus</div></div>
+        <div class="ex-badge">3 × 6–12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>30–45° bench; pinch shoulder blades before unracking</li>
+          <li>Lower DBs to outer chest; elbows ~75° from torso</li>
+          <li>Drive through palms; rotate slightly inward at top</li>
+          <li>Heaviest set of the workout — go here fresh</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">This is your strength set — aim for 6-8 reps with a weight that's genuinely challenging. The heavy incline DB sets the upper-chest foundation that everything else builds on.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">02</span>
+        <div><div class="ex-name">Incline Bench — Slow (40–50 kg) <span class="arr">›</span></div><div class="ex-focus">Upper chest · Time-under-tension · Hypertrophy focus</div></div>
+        <div class="ex-badge">16–20 reps</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Moderate weight; 3-sec eccentric, 1-sec pause at bottom</li>
+          <li>Touch chest; full extension at top</li>
+          <li>The slow tempo is intentional — fight every rep</li>
+        </ul></div>
+        <div><div class="dl-lbl">Why This Works</div><div class="tip-box">Back-to-back incline (heavy then high-rep slow) creates both mechanical tension AND metabolic stress on the upper pec. Two different growth signals = more complete stimulus.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">03</span>
+        <div><div class="ex-name">Pec Deck Fly <span class="arr">›</span></div><div class="ex-focus">Chest isolation · Full stretch position · Constant tension</div></div>
+        <div class="ex-badge">3 × 18</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Sit tall; forearms on pads or hands on handles</li>
+          <li>Bring pads together with a "hugging" motion; hold 1 sec</li>
+          <li>Control the return fully — that stretch is the stimulus</li>
+          <li>18 reps: go moderate weight, full range priority</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Pec deck isolates the chest better than almost anything because there's no tricep involvement. The stretch at the open position is where most pec damage (and growth) occurs. Don't rush through it.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">04</span>
+        <div><div class="ex-name">Flat Bench Press <span class="arr">›</span></div><div class="ex-focus">Mid/overall chest · Horizontal push strength</div></div>
+        <div class="ex-badge">2 × 6–12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Natural arch; feet drive into floor; leg drive = stability</li>
+          <li>Touch bar to lower sternum; elbows 45–60° to torso</li>
+          <li>"Pull the bar apart" to activate lats and protect shoulders</li>
+        </ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Only 2 sets here because you've already pre-fatigued the chest with 6 incline/fly sets. These 2 sets of flat bench will feel harder than usual — that's the point.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">05</span>
+        <div><div class="ex-name">Decline DB Press <span class="arr">›</span></div><div class="ex-focus">Lower chest · Sternal fibres · Finishing pump</div></div>
+        <div class="ex-badge">3 × 16</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Decline bench; DBs at chest level, elbows wide</li>
+          <li>Press up and slightly inward; squeeze hard at top</li>
+          <li>16 reps = moderate weight, pump focus</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Lower chest fibres only activate fully when pressing from a decline angle. Most people skip decline work and end up with underdeveloped lower pecs. This set fills that gap.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--teal)">Triceps</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">06</span>
+        <div><div class="ex-name">Triceps Pushdown <span class="arr">›</span></div><div class="ex-focus">Lateral + medial head · Lockout strength</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Rope or bar; slight forward hinge; elbows pinned to sides</li>
+          <li>Split rope at bottom for full lateral-head squeeze</li>
+          <li>Let rope rise to chin level for complete stretch</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Going to failure after 5 chest exercises means your triceps are already partially fatigued from pressing. You'll reach failure faster — that's expected. Don't adjust the weight up.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">07</span>
+        <div><div class="ex-name">Cable Overhead Triceps Extension <span class="arr">›</span></div><div class="ex-focus">Long head (largest head) · Peak stretch position</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Face away from cable; rope overhead, arms bent</li>
+          <li>Extend arms forward fully; hold squeeze at full extension</li>
+          <li>Return slowly — the stretch is the money position</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">The overhead position is the only way to fully stretch the long head of the triceps — the largest of the three heads. Pairing this with pushdown (which hits the other heads) = complete tricep stimulus.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="abs-block">
+    <div class="abs-title">🟡 Abs Finisher</div>
+    <div class="abs-grid">
+      <div class="abs-item"><div class="abs-ex">Crunches</div><div class="abs-sets">3 × 15–20</div><div class="abs-note">Hands at temples; curl ribs to hips; don't pull neck</div></div>
+      <div class="abs-item"><div class="abs-ex">Leg Raises</div><div class="abs-sets">3 × 12–15</div><div class="abs-note">Posterior pelvic tilt at top activates lower abs — not just hip flexors</div></div>
+      <div class="abs-item"><div class="abs-ex">Plank</div><div class="abs-sets">3 × 30–60 sec</div><div class="abs-note">Rigid body; squeeze glutes + quads + abs simultaneously</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 2 — WEDNESDAY · SHOULDERS
+══════════════════════════════════════════ -->
+<div class="panel panel-yellow" id="d2">
+  <div class="day-hdr">
+    <div class="dh-left">
+      <div class="dh-eyebrow" style="color:var(--yellow)">Wednesday · Shoulders + Forearms</div>
+      <div class="dh-title">Shoulders</div>
+      <div class="dh-note">Press → lateral isolation → rear delt → traps → forearm finisher</div>
+      <div class="chips">
+        <span class="chip ch-shld">Shoulders</span>
+        <span class="chip ch-fore">Forearms</span>
+      </div>
+    </div>
+    <div class="dh-counters">
+      <div class="dc"><div class="dc-n" style="color:var(--yellow)">4</div><div class="dc-l">Shoulder Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--teal)">5</div><div class="dc-l">Forearm Ex.</div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--yellow)">Shoulders</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">01</span>
+        <div><div class="ex-name">DB Press <span class="arr">›</span></div><div class="ex-focus">Anterior + medial delt · Overhead strength base</div></div>
+        <div class="ex-badge">3 × 8–14</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Seated or standing; DBs at ear level, palms forward</li>
+          <li>Press up and slightly inward; full extension overhead</li>
+          <li>Control descent — don't drop below ear level</li>
+          <li>8–14 range: heavier sets early, lighter as fatigue builds</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">DB press allows each arm to move independently, fixing strength imbalances. If one arm is noticeably weaker, always start with the weaker side and match reps.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">02</span>
+        <div><div class="ex-name">Cable Lateral Raise <span class="arr">›</span></div><div class="ex-focus">Medial delt · Width builder · Constant tension</div></div>
+        <div class="ex-badge">3 × 16–20</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Cable at ankle height; lean slightly away from stack</li>
+          <li>Lead with elbow; tilt pinky up slightly at shoulder height</li>
+          <li>Controlled descent — 2 sec down minimum</li>
+          <li>16–20 reps: this is a pump exercise, not a strength exercise</li>
+        </ul></div>
+        <div><div class="dl-lbl">Cable vs Dumbbell</div><div class="tip-box">Cable provides constant tension through the full range; dumbbells drop to near-zero at the bottom. Cable lateral raises are objectively more effective for medial delt isolation — good choice here.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">03</span>
+        <div><div class="ex-name">Reverse Pec Deck — Slow <span class="arr">›</span></div><div class="ex-focus">Posterior delt · Rhomboids · Shoulder health</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Face the pec deck; arms forward, slight elbow bend</li>
+          <li>Drive elbows back and out in a wide arc</li>
+          <li>"Slow" is key — 3-sec eccentric; don't use traps to assist</li>
+          <li>Hold 1 sec at rear peak; feel the rear delt squeeze</li>
+        </ul></div>
+        <div><div class="dl-lbl">Critical</div><div class="tip-box">Rear delts are almost universally underdeveloped because they're invisible in the mirror. They're essential for shoulder health, posture, and the 3D "capped" shoulder look. The slow tempo doubles the stimulus here.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">04</span>
+        <div><div class="ex-name">Cable Shrugs <span class="arr">›</span></div><div class="ex-focus">Upper traps · Neck-shoulder tie-in</div></div>
+        <div class="ex-badge">3 × 12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Cable at low position; straight arms; shrug straight up</li>
+          <li>Hold at peak for 2 sec — don't roll the shoulders forward</li>
+          <li>Controlled descent; full range</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Cable shrugs keep constant tension vs barbell which loses it at the bottom. The upward shrug path (not forward roll) keeps the movement in the trap fibres, not the rotator cuff.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="fore-block">
+    <div class="fore-title">🔵 Forearm Finisher</div>
+    <div class="fore-grid">
+      <div class="fore-item"><div class="fore-ex">Reverse Grip Curls</div><div class="fore-sets">3 × 12</div></div>
+      <div class="fore-item"><div class="fore-ex">Reverse Wrist Curls</div><div class="fore-sets">3 × Failure</div></div>
+      <div class="fore-item"><div class="fore-ex">Bar Forearm Pushdown</div><div class="fore-sets">2 × 15</div></div>
+      <div class="fore-item"><div class="fore-ex">Reverse Wrist Curls</div><div class="fore-sets">3 × 12</div></div>
+      <div class="fore-item"><div class="fore-ex">Wrist Curls</div><div class="fore-sets">3 × 12</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 3 — THURSDAY · LEGS
+══════════════════════════════════════════ -->
+<div class="panel panel-green" id="d3">
+  <div class="day-hdr">
+    <div class="dh-left">
+      <div class="dh-eyebrow" style="color:var(--green)">Thursday · Lower Body</div>
+      <div class="dh-title">Legs</div>
+      <div class="dh-note">Heavy compound squats → quad isolation → hamstring isolation → abs</div>
+      <div class="chips">
+        <span class="chip ch-legs">Legs</span>
+        <span class="chip ch-abs">Abs</span>
+      </div>
+    </div>
+    <div class="dh-counters">
+      <div class="dc"><div class="dc-n" style="color:var(--green)">3</div><div class="dc-l">Leg Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--yellow)">3</div><div class="dc-l">Abs Ex.</div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--green)">Legs</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">01</span>
+        <div><div class="ex-name">Heavy Squats <span class="arr">›</span></div><div class="ex-focus">Quads · Glutes · Core stability · Primary strength movement</div></div>
+        <div class="ex-badge">3 × 8–14</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Bar on mid-trap shelf; brace core hard before every rep</li>
+          <li>Break at hips and knees simultaneously; descend to parallel+</li>
+          <li>Knees track over toes; drive through full foot</li>
+          <li>Chest stays tall; don't good-morning it up</li>
+          <li>Build to bodyweight squat by end of 3 months</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">The squat is the king of lower-body exercises. Every rep strengthens your quads, glutes, core, and stabiliser muscles simultaneously. Track your squat numbers weekly — consistent progress here pays dividends everywhere.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">02</span>
+        <div><div class="ex-name">Leg Extension <span class="arr">›</span></div><div class="ex-focus">Quad isolation · VMO · Terminal extension</div></div>
+        <div class="ex-badge">3 × 20</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Align knee joint with machine's cam pivot point</li>
+          <li>Extend fully and squeeze the VMO at the top</li>
+          <li>3-sec eccentric every rep; toes slightly inward for inner quad</li>
+          <li>20 reps = moderate weight; metabolic pump focus</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">20-rep leg extensions after heavy squats create brutal quad pump and metabolic stress — a different stimulus than the mechanical tension of the squat. Together, they're comprehensive.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">03</span>
+        <div><div class="ex-name">Leg Curl <span class="arr">›</span></div><div class="ex-focus">Hamstring isolation · Knee health · Posterior chain balance</div></div>
+        <div class="ex-badge">3 × 20</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Hips flat on pad; curl fully until heels near glutes</li>
+          <li>Hold peak contraction 1 sec; 3-sec eccentric</li>
+          <li>Pointed toes increases peak hamstring contraction</li>
+        </ul></div>
+        <div><div class="dl-lbl">Why 20 Reps</div><div class="tip-box">Hamstrings have a high proportion of slow-twitch fibres and respond extremely well to high reps. 20-rep leg curls after 20-rep extensions = complete quad/ham balance, protecting the knee joint.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="abs-block">
+    <div class="abs-title">🟡 Abs Finisher</div>
+    <div class="abs-grid">
+      <div class="abs-item"><div class="abs-ex">Crunches</div><div class="abs-sets">3 × 15–20</div><div class="abs-note">Focus on rib-to-hip contraction — not pulling the neck forward</div></div>
+      <div class="abs-item"><div class="abs-ex">Leg Raises</div><div class="abs-sets">3 × 12–15</div><div class="abs-note">Curl hips up at the top for lower ab activation</div></div>
+      <div class="abs-item"><div class="abs-ex">Plank</div><div class="abs-sets">3 × 30–60 sec</div><div class="abs-note">Progress: when 60 sec feels easy, add a weight plate on your back</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 4 — FRIDAY · BACK & BICEPS (2nd Hit)
+══════════════════════════════════════════ -->
+<div class="panel panel-blue" id="d4">
+  <div class="day-hdr">
+    <div class="dh-left">
+      <div class="dh-eyebrow" style="color:var(--blue)">Friday · Second Pull · Alternate Variations</div>
+      <div class="dh-title">Back &amp; Biceps</div>
+      <div class="dh-note">Different angles from Monday — reverse grip row + hammer curl variation</div>
+      <div class="chips">
+        <span class="chip ch-back">Back</span>
+        <span class="chip ch-bicep">Biceps</span>
+        <span class="chip ch-fore">Forearms</span>
+      </div>
+    </div>
+    <div class="dh-counters">
+      <div class="dc"><div class="dc-n" style="color:var(--blue)">4</div><div class="dc-l">Back Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--purple)">1</div><div class="dc-l">Bicep Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--teal)">5</div><div class="dc-l">Forearm Ex.</div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--blue)">Back — Different Angles from Monday</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">01</span>
+        <div><div class="ex-name">Reverse Grip Bent-Over Row <span class="arr">›</span></div><div class="ex-focus">Lower lats · Bicep involvement · Different pull angle</div></div>
+        <div class="ex-badge">3 × 12–16</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Underhand (supinated) grip; hip hinge same as T-bar row</li>
+          <li>Elbows stay closer to torso than overhand row</li>
+          <li>Pull to lower abdomen; supinated grip emphasises lower lats</li>
+        </ul></div>
+        <div><div class="dl-lbl">Why Different from Monday</div><div class="tip-box">Monday's T-bar row used an overhand/neutral grip. Today's reverse grip shifts the load to lower lats and involves the biceps more heavily — a complementary stimulus for complete back development.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">02</span>
+        <div><div class="ex-name">Lat Pulldown <span class="arr">›</span></div><div class="ex-focus">Lat width — use different grip than Monday</div></div>
+        <div class="ex-badge">3 × 12–16</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Grip Rotation</div><ul class="cues">
+          <li>Monday: V-bar or close neutral grip</li>
+          <li>Friday: Wide overhand OR underhand supinated</li>
+          <li>Different grips recruit different lat fibre regions</li>
+        </ul></div>
+        <div><div class="dl-lbl">Pro Tip</div><div class="tip-box">Rotating grip weekly prevents adaptation and ensures you're developing width, thickness, and the full lat from top to bottom. Varying the stimulus is a core principle of the 2× frequency approach.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">03</span>
+        <div><div class="ex-name">Seated Row <span class="arr">›</span></div><div class="ex-focus">Mid-back · Second weekly hit with constant tension</div></div>
+        <div class="ex-badge">3 × 14–20</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same execution as Monday; vary the attachment if available</li><li>Wide grip = more upper-back; close V-bar = more lower lat</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Second weekly hit on the same movement pattern builds strength faster than single weekly exposure. Consistency on this movement will show visible back thickness in 6–8 weeks.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">04</span>
+        <div><div class="ex-name">Pullover <span class="arr">›</span></div><div class="ex-focus">Lats · Serratus · Long-head triceps</div></div>
+        <div class="ex-badge">2 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same execution as Monday; go slightly heavier or slower</li><li>Full stretch at overhead position — the key stimulus</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Pullover is kept both days because it's the only exercise that works the lats through a pure overhead stretch arc — a movement pattern nothing else replicates.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--purple)">Biceps — Hammer Variation</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">05</span>
+        <div><div class="ex-name">Hammer Curl <span class="arr">›</span></div><div class="ex-focus">Brachialis · Brachioradialis · Arm thickness</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues">
+          <li>Neutral grip (thumbs up); elbows fixed at sides</li>
+          <li>Curl in a vertical plane; wrists stay neutral throughout</li>
+          <li>Full extension at bottom; don't swing</li>
+        </ul></div>
+        <div><div class="dl-lbl">Why Different from Monday's Curls</div><div class="tip-box">Monday focused on supinated curls (long head, peak). Friday's hammer curl focuses on the brachialis — the muscle under the bicep that pushes it up and creates arm thickness. Together they develop the complete arm.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="fore-block">
+    <div class="fore-title">🔵 Forearm Finisher — Same Protocol</div>
+    <div class="fore-grid">
+      <div class="fore-item"><div class="fore-ex">Reverse Grip Curls</div><div class="fore-sets">3 × 12</div></div>
+      <div class="fore-item"><div class="fore-ex">Reverse Wrist Curls</div><div class="fore-sets">3 × Failure</div></div>
+      <div class="fore-item"><div class="fore-ex">Bar Forearm Pushdown</div><div class="fore-sets">2 × 15</div></div>
+      <div class="fore-item"><div class="fore-ex">Reverse Wrist Curls</div><div class="fore-sets">3 × 12</div></div>
+      <div class="fore-item"><div class="fore-ex">Wrist Curls</div><div class="fore-sets">3 × 12</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 5 — SATURDAY · CHEST & TRICEPS (Repeat)
+══════════════════════════════════════════ -->
+<div class="panel panel-red" id="d5">
+  <div class="day-hdr">
+    <div class="dh-left">
+      <div class="dh-eyebrow" style="color:var(--red)">Saturday · Second Push · Exact Repeat</div>
+      <div class="dh-title">Chest &amp; Triceps</div>
+      <div class="dh-note">Same as Tuesday — 2× weekly chest frequency for maximum hypertrophy</div>
+      <div class="chips">
+        <span class="chip ch-chest">Chest</span>
+        <span class="chip ch-tri">Triceps</span>
+        <span class="chip ch-abs">Abs</span>
+      </div>
+    </div>
+    <div class="dh-counters">
+      <div class="dc"><div class="dc-n" style="color:var(--red)">5</div><div class="dc-l">Chest Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--teal)">2</div><div class="dc-l">Tri Ex.</div></div>
+      <div class="dc"><div class="dc-n" style="color:var(--yellow)">3</div><div class="dc-l">Abs Ex.</div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--red)">Chest — Same as Tuesday</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">01</span>
+        <div><div class="ex-name">Incline DB Press — Heavy <span class="arr">›</span></div><div class="ex-focus">Upper chest · Try to beat Tuesday's weight or reps</div></div>
+        <div class="ex-badge">3 × 6–12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Saturday Strategy</div><ul class="cues">
+          <li>Compare with Tuesday's performance — match or beat it</li>
+          <li>If you hit the top of the rep range (12), add 2 kg next week</li>
+          <li>Same cues as Tuesday; execution consistency is the goal</li>
+        </ul></div>
+        <div><div class="dl-lbl">Why Repeat</div><div class="tip-box">Exact repetition of the same session on Saturday is intentional. Your neuromuscular system has 4 days to recover since Tuesday — you should be slightly stronger. Track this. Progressive overload across both sessions = faster growth.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">02</span>
+        <div><div class="ex-name">Incline Bench — Slow (40–50 kg) <span class="arr">›</span></div><div class="ex-focus">Upper chest · Time-under-tension</div></div>
+        <div class="ex-badge">16–20 reps</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>3-sec eccentric; same weight as Tuesday</li><li>If you completed 20 reps Tuesday, add 2.5 kg</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Same execution. Your second hit of the week on this movement means muscle protein synthesis is still elevated from Tuesday — you're training in an anabolic window.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">03</span>
+        <div><div class="ex-name">Pec Deck Fly <span class="arr">›</span></div><div class="ex-focus">Chest isolation · Full stretch</div></div>
+        <div class="ex-badge">3 × 18</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same execution as Tuesday; hold the stretch longer if possible</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Isolation work like pec deck responds well to exact repetition — your mind-muscle connection improves week to week on the same movement.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">04</span>
+        <div><div class="ex-name">Flat Bench Press <span class="arr">›</span></div><div class="ex-focus">Mid/overall chest · Second weekly compound press</div></div>
+        <div class="ex-badge">2 × 6–12</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same as Tuesday; prioritise hitting the higher end of the rep range today</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Two flat bench sets twice per week = four quality compound chest sets weekly. At beginner-intermediate level this is the optimal volume for strength progression.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">05</span>
+        <div><div class="ex-name">Decline DB Press <span class="arr">›</span></div><div class="ex-focus">Lower chest · Sternal fibres finisher</div></div>
+        <div class="ex-badge">3 × 16</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same execution as Tuesday; this is your last chest exercise of the week — make it count</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Lower chest, hit twice this week. Combined with the incline and flat variations, your chest has been trained through all three primary fibre angles — top to bottom coverage.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec-divider" style="color:var(--teal)">Triceps — Same as Tuesday</div>
+  <div class="ex-wrap">
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">06</span>
+        <div><div class="ex-name">Triceps Pushdown <span class="arr">›</span></div><div class="ex-focus">Lateral + medial head · Failure finisher</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same as Tuesday; match or beat rep count</li></ul></div>
+        <div><div class="dl-lbl">Note</div><div class="tip-box">Triceps recover quickly (72 hrs). By Saturday they're fully ready for another maximum effort. Failure sets twice weekly on triceps = very high stimulus for growth.</div></div>
+      </div></div>
+    </div>
+    <div class="ex" onclick="tog(this)">
+      <div class="ex-row"><span class="ex-num">07</span>
+        <div><div class="ex-name">Cable Overhead Triceps Extension <span class="arr">›</span></div><div class="ex-focus">Long head · Peak stretch · Week finisher</div></div>
+        <div class="ex-badge">3 × Failure</div>
+      </div>
+      <div class="ex-detail"><div class="detail-inner">
+        <div><div class="dl-lbl">Cues</div><ul class="cues"><li>Same as Tuesday; this is your final arm exercise of the week</li><li>Leave nothing in the tank on the last set</li></ul></div>
+        <div><div class="dl-lbl">Week Closer</div><div class="tip-box">This is the last working set of the week. Make it your best. Full ROM, maximum stretch, controlled tempo. You'll be in recovery mode tomorrow — train like it matters today.</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="abs-block">
+    <div class="abs-title">🟡 Abs Finisher</div>
+    <div class="abs-grid">
+      <div class="abs-item"><div class="abs-ex">Crunches</div><div class="abs-sets">3 × 15–20</div><div class="abs-note">Third time this week — aim for top of the rep range</div></div>
+      <div class="abs-item"><div class="abs-ex">Leg Raises</div><div class="abs-sets">3 × 12–15</div><div class="abs-note">Add a hip curl at the top every rep for max lower-ab activation</div></div>
+      <div class="abs-item"><div class="abs-ex">Plank</div><div class="abs-sets">3 × 30–60 sec</div><div class="abs-note">Beat your Tuesday time by 5 seconds at minimum</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 6 — SUNDAY · REST
+══════════════════════════════════════════ -->
+<div class="panel" id="d6">
+  <div class="rest-panel">
+    <div class="rest-ico">🛑</div>
+    <div class="rest-h">Rest &amp; Recover</div>
+    <p class="rest-p">You trained 6 days. Every session, every rep of this week has broken your muscle fibres down. Sunday is when they rebuild — bigger and stronger than before. Don't skip recovery.</p>
+    <div class="rest-pills">
+      <div class="rpill">💤 8–9 hrs sleep</div>
+      <div class="rpill">🥩 Hit protein target</div>
+      <div class="rpill">💧 3–4 L water</div>
+      <div class="rpill">🧘 Light stretching</div>
+      <div class="rpill">🚶 Easy 20 min walk</div>
+      <div class="rpill">📋 Plan next week's weights</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ WEEK TRACKER ═══════════════ -->
+<div class="tracker-sec">
+  <div class="sec-label">Weekly Progress Tracker</div>
+  <div class="tgrid" id="tracker"></div>
+</div>
+
+<footer>
+  <span class="ft-name">Harsh Raj</span>
+  <span class="ft-note">Full Workout Plan · 6-Day Split · Powerhouse Patna Gym · Offline Ready</span>
+</footer>
+
+</div><!-- /wrap -->
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+const cards = document.querySelectorAll('.ws-card');
+
+function showDay(i, card, tab) {
+  panels.forEach(p => p.classList.remove('active'));
+  tabs.forEach(t => t.classList.remove('active'));
+  cards.forEach(c => c.classList.remove('active-day'));
+  document.getElementById('d' + i).classList.add('active');
+  if (tab) tab.classList.add('active');
+  else tabs[i].classList.add('active');
+  if (card) card.classList.add('active-day');
+  else if (cards[i]) cards[i].classList.add('active-day');
+}
+
+function tog(el) { el.classList.toggle('open'); }
+
+// Week tracker
+const days = [
+  { l: 'MON', c: 'var(--blue)' },
+  { l: 'TUE', c: 'var(--red)' },
+  { l: 'WED', c: 'var(--yellow)' },
+  { l: 'THU', c: 'var(--green)' },
+  { l: 'FRI', c: 'var(--blue)' },
+  { l: 'SAT', c: 'var(--red)' },
+  { l: 'SUN', c: 'var(--muted)' },
+];
+const saved = JSON.parse(localStorage.getItem('harsh_week') || '[]');
+const wrap = document.getElementById('tracker');
+days.forEach((d, i) => {
+  const el = document.createElement('div');
+  const done = saved.includes(i);
+  el.className = 'tday' + (done ? ' done' : '');
+  el.innerHTML = `<span class="td-n" style="color:${done ? 'var(--green)' : d.c}">${d.l}</span><span class="td-l">${i < 6 ? 'Day '+(i+1) : 'Rest'}</span>`;
+  el.onclick = () => {
+    el.classList.toggle('done');
+    const n = el.querySelector('.td-n');
+    n.style.color = el.classList.contains('done') ? 'var(--green)' : d.c;
+    const s = JSON.parse(localStorage.getItem('harsh_week') || '[]');
+    if (el.classList.contains('done')) s.push(i); else s.splice(s.indexOf(i), 1);
+    localStorage.setItem('harsh_week', JSON.stringify(s));
+  };
+  wrap.appendChild(el);
+});
+
+// Activate first week strip card
+cards[0] && cards[0].classList.add('active-day');
+</script>
+</body>
+</html>
