@@ -5,7 +5,7 @@
 
 'use strict';
 
-const CACHE_NAME = 'harsh-workout-v1';
+const CACHE_NAME = 'harsh-workout-v2';
 
 // Essential files for offline fallback
 const PRECACHE_URLS = [

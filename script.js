@@ -83,10 +83,18 @@ function switchDay(index) {
 // --- Exercise Logic ---
 function initExerciseToggles() {
     document.addEventListener('click', (e) => {
+        // Exercise Card Toggle
         const header = e.target.closest('.exercise-header');
         if (header) {
             const card = header.closest('.exercise-card');
             card.classList.toggle('open');
+        }
+
+        // Muscle Group Toggle
+        const groupHeader = e.target.closest('.group-header');
+        if (groupHeader) {
+            const group = groupHeader.closest('.muscle-group');
+            group.classList.toggle('open');
         }
     });
 }
