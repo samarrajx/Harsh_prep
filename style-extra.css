@@ -55,7 +55,7 @@ body {
     background-color: var(--bg);
     color: var(--text-primary);
     font-family: 'Sora', sans-serif;
-    line-height: 1.5;
+    line-height: 1.4;
     overflow-x: hidden;
     min-height: 100vh;
 }
@@ -97,24 +97,24 @@ body::before {
 .app-container {
     max-width: 600px;
     margin: 0 auto;
-    padding: calc(20px + var(--safe-area-top)) 20px calc(100px + var(--safe-area-bottom));
+    padding: calc(12px + var(--safe-area-top)) 16px calc(80px + var(--safe-area-bottom));
 }
 
 /* Header */
 header {
-    margin-bottom: 30px;
+    margin-bottom: 16px;
 }
 
 .brand-eyebrow {
     font-size: 12px;
     letter-spacing: 0.2em;
     color: var(--accent);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     transition: color 0.5s ease;
 }
 
 .hero-title {
-    font-size: 48px;
+    font-size: 34px;
     line-height: 0.9;
     letter-spacing: -0.02em;
 }
@@ -129,7 +129,7 @@ header {
 
 .hero-title .sub {
     color: var(--text-dim);
-    font-size: 32px;
+    font-size: 20px;
 }
 
 /* Navigation */
@@ -144,7 +144,7 @@ header {
     border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-around;
-    padding: 10px 10px calc(10px + var(--safe-area-bottom));
+    padding: 6px 8px calc(6px + var(--safe-area-bottom));
     z-index: 1000;
 }
 
@@ -154,7 +154,7 @@ header {
     align-items: center;
     color: var(--text-dim);
     text-decoration: none;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -164,9 +164,9 @@ header {
 }
 
 .nav-icon {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 4px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
@@ -188,14 +188,14 @@ header {
 }
 
 .day-header {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
 .day-info h2 {
-    font-size: 36px;
+    font-size: 26px;
     color: var(--text-primary);
 }
 
@@ -204,11 +204,75 @@ header {
     font-size: 14px;
 }
 
+.day-note-pwa {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+/* Muscle Groups */
+.muscle-group {
+    margin-bottom: 6px;
+}
+
+.group-header {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.group-header:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-bright);
+}
+
+.group-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.group-icon {
+    font-size: 14px;
+    color: var(--text-dim);
+    transition: transform 0.3s ease;
+}
+
+.muscle-group.open .group-icon {
+    transform: rotate(180deg);
+}
+
+.group-content {
+    display: none;
+    padding-left: 4px;
+}
+
+.muscle-group.open .group-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .exercise-card {
     background: var(--bg-surface);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    margin-bottom: 16px;
+    border-radius: 10px;
+    margin-bottom: 8px;
     overflow: hidden;
     transition: border-color 0.3s ease;
 }
@@ -234,7 +298,7 @@ header {
 }
 
 .exercise-header {
-    padding: 16px;
+    padding: 10px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -244,28 +308,28 @@ header {
 .ex-title-wrap {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 }
 
 .ex-number {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--accent);
     opacity: 0.7;
 }
 
 .ex-name {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .ex-badge {
     background: rgba(255, 255, 255, 0.05);
-    padding: 4px 10px;
+    padding: 2px 8px;
     border-radius: 6px;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* Expanded Details */
@@ -282,20 +346,20 @@ header {
 }
 
 .details-content {
-    padding: 0 16px 16px;
+    padding: 0 12px 10px;
 }
 
 .cues-list {
     list-style: none;
-    margin: 12px 0;
+    margin: 6px 0;
 }
 
 .cues-list li {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-secondary);
-    padding-left: 18px;
+    padding-left: 14px;
     position: relative;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
 }
 
 .cues-list li::before {
@@ -308,9 +372,9 @@ header {
 .tip-box {
     background: rgba(255, 255, 255, 0.03);
     border-left: 2px solid var(--accent);
-    padding: 10px;
+    padding: 7px 9px;
     border-radius: 0 8px 8px 0;
-    font-size: 12px;
+    font-size: 11px;
     font-style: italic;
     color: var(--text-secondary);
 }
@@ -318,23 +382,23 @@ header {
 /* Set Tracker */
 .sets-tracker {
     display: flex;
-    gap: 8px;
-    margin-top: 15px;
-    padding-top: 15px;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 1px solid var(--border);
 }
 
 .set-check {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 14px;
     color: var(--text-dim);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -350,18 +414,18 @@ header {
 
 /* Weekly Tracker */
 .weekly-tracker {
-    margin-top: 40px;
-    padding: 20px;
+    margin-top: 24px;
+    padding: 14px;
     background: var(--bg-surface);
-    border-radius: 20px;
+    border-radius: 12px;
     border: 1px solid var(--border);
 }
 
 .tracker-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin-top: 15px;
+    gap: 5px;
+    margin-top: 10px;
 }
 
 .tracker-day {
@@ -373,7 +437,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     color: var(--text-dim);
 }
@@ -404,8 +468,8 @@ header {
     position: fixed;
     top: calc(20px + var(--safe-area-top));
     right: 20px;
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: var(--bg-glass);
     backdrop-filter: blur(10px);
